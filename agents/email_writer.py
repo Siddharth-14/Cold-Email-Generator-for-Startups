@@ -7,6 +7,17 @@ def writer_agent(persona, model, feedback=None):
 
         Include the following format:
         Subject: <subject line>
+
+        Hello <name>,
+
+        <email body>
+
+        Regards,
+        <your name>
+        <your title>
+        <your company>
+        <your company website>
+        <your company phone number>
         CTA: <call-to-action link or text>
 
         Feedback: {feedback}
@@ -22,9 +33,17 @@ def writer_agent(persona, model, feedback=None):
         Return ONLY the email in this format and wrap it between dashes ("----------"):
 
         Subject: <subject line>
+        
+        Hello <name>,
 
         <email body>
 
+        Regards,
+        <your name>
+        <your title>
+        <your company>
+        <your company website>
+        <your company phone number>
         CTA: <call-to-action>
         """
     response = model.generate_content(prompt).text
