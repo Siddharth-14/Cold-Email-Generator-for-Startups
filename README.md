@@ -4,7 +4,7 @@ This project generates personalized cold outreach emails for B2C startups using 
 
 ## 🚀 Features
 
-* Google Gemini API (chat-bison-001) powered content generation
+* Google Gemini API (gemini-2.0-flash-lite) powered content generation
 * Multi-agent architecture for research, interest inference, persona creation, email writing, and editing
 * Editor feedback loop until email is approved
 * Extracted email in structured format with Subject and CTA
