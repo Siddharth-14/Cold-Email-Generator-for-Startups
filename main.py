@@ -16,7 +16,7 @@ logger = get_logger(__name__)
 
 load_dotenv()
 configure(api_key=os.getenv("GEMINI_API_KEY"))
-model = GenerativeModel(model_name="gemini-2.0-flash-lite")
+model = GenerativeModel(model_name="gemini-2.0-flash")
 
 def extract_email_body(text):
     match = re.search(r"-+\n(.+?)\n-+", text, re.DOTALL)
@@ -59,7 +59,7 @@ def run_pipeline(input_file):
         else:
             final_email = extract_email_body(email)
             logger.info(f"Final email: {row['Name']}")
-            
+
         emails.append(final_email)
 
     leads['Email'] = emails
