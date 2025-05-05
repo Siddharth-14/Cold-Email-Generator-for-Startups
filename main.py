@@ -12,8 +12,7 @@ import re
 import streamlit as st
 
 load_dotenv()
-# configure(api_key=os.getenv("GEMINI_API_KEY"))
-configure(api_key=st.secrets["GEMINI_API_KEY"])
+configure(api_key=os.getenv("GEMINI_API_KEY"))
 model = GenerativeModel(model_name="gemini-2.0-flash-lite")
 
 def extract_email_body(text):
