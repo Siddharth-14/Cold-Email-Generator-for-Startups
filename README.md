@@ -1,6 +1,6 @@
 # Cold Email Generator for B2C Startups
 
-This project generates personalized cold outreach emails for B2C startups using Google's Gemini (via Generative AI) and a multi-agent architecture. It is specifically designed for luxury travel experiences such as those offered by [Inspirato](https://www.inspirato.com/).
+This project generates personalized cold outreach emails for B2C startups using Google's Gemini (via Generative AI) and a multi-agent architecture. It is specifically designed for luxury travel experiences.
 
 ## 🚀 Features
 
