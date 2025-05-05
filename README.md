@@ -2,6 +2,8 @@
 
 This project generates personalized cold outreach emails for B2C startups using Google's Gemini (via Generative AI) and a multi-agent architecture. It is specifically designed for luxury travel experiences.
 
+## 🚀 Live Demo:- https://cold-email-generator-for-startups.onrender.com
+
 ## 🚀 Features
 
 * Google Gemini API (gemini-2.0-flash-lite) powered content generation
@@ -68,6 +70,6 @@ This project generates personalized cold outreach emails for B2C startups using 
 
 ## 📦 Deployment
 
-This project is ready to be deployed to [Streamlit Cloud](https://streamlit.io/cloud). You’ll need to set the GEMINI\_API\_KEY in the secret manager.
+This project is ready to be deployed to [Render](https://render.com). You’ll need to set the GEMINI\_API\_KEY in the secret manager.
 
 ---
