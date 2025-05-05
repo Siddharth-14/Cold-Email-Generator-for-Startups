@@ -1,105 +1,73 @@
-# Cold Email Generator for Startups - Product Requirements Document (PRD)
+# Cold Email Generator for B2C Startups
 
-## 📝 Overview
+This project generates personalized cold outreach emails for B2C startups using Google's Gemini (via Generative AI) and a multi-agent architecture. It is specifically designed for luxury travel experiences such as those offered by [Inspirato](https://www.inspirato.com/).
 
-The Cold Email Generator is a web-based tool for startups to automate the creation of personalized sales outreach emails. It uses CrewAI to orchestrate multi-agent workflows that research leads, analyze their company, and generate custom cold emails with optional follow-ups.
+## 🚀 Features
 
-## 🎯 Goals
+* Google Gemini API (chat-bison-001) powered content generation
+* Multi-agent architecture for research, interest inference, persona creation, email writing, and editing
+* Editor feedback loop until email is approved
+* Extracted email in structured format with Subject and CTA
+* CSV-based input/output
+* Streamlit UI for file upload and download
 
-- Help startups speed up cold outreach campaigns.
-- Increase personalization to boost reply rates.
-- Automate lead research and email writing with AI agents.
+## 📁 Project Structure
 
-## 📦 Key Features
+```
+├── agents/
+│   ├── researcher.py          # Finds context from name
+│   ├── interests_and_trips.py# Infers interests and travel history
+│   ├── persona_builder.py    # Builds a customer persona
+│   ├── email_writer.py       # Writes and revises email
+│   └── editor.py             # Reviews and approves email
+├── utils/
+│   └── lead_loader.py        # CSV input/output
+├── main.py                   # Pipeline logic with retry loop
+├── frontend.py               # Streamlit UI
+├── requirements.txt          # Dependencies
+└── .env                      # GEMINI_API_KEY
+```
 
-- Upload CSV with `Name`, `Company`, and optionally `Job Title`.
-- Automatically research company background (via SerpAPI / Google Search).
-- Generate a personalized cold email + follow-up.
-- View and export generated emails to updated CSV.
-- Optional: Basic job dashboard to view generation status.
+## 🧪 Run Locally
 
-## 🧠 Agent Roles (CrewAI)
+1. Clone the repo
+2. Add your API key in `.env`:
 
-1. **Lead Research Agent**
-   - Searches for recent news or descriptions of the company.
-   - Gathers social or business context (e.g. hiring, funding, product launch).
+   ```bash
+   GEMINI_API_KEY=your-google-api-key
+   ```
+3. Install dependencies:
 
-2. **Company Analyzer Agent**
-   - Summarizes company focus and identifies outreach opportunities.
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Launch the Streamlit app:
 
-3. **Email Generator Agent**
-   - Crafts the first personalized email.
+   ```bash
+   streamlit run frontend.py
+   ```
 
-4. **Refiner Agent**
-   - Enhances tone, grammar, and structure for higher conversion.
+## 📝 Input Format
 
-5. **Follow-Up Agent** (Optional)
-   - Generates a follow-up email in case there’s no reply.
+* CSV file with a column named `Name`
 
-## ⚙️ Tech Stack
+## 📤 Output Format
 
-- **Frontend:** Streamlit (for MVP), or React (for production)
-- **Backend:** Python (FastAPI or Flask)
-- **Multi-Agent Framework:** [CrewAI](https://github.com/joaomdmoura/crewAI)
-- **Search API:** SerpAPI, Google Programmable Search
-- **Deployment:** Docker + GitHub Actions + Render/Heroku
+* Same CSV with an added column `Email`
+* Email is structured like:
 
-## 🧪 Testing
+  ```
+  ----------
+  Subject: Explore the Amalfi Coast in Style
 
-- Unit tests for:
-  - CSV parsing
-  - Agent prompts and outputs
-- Integration tests for:
-  - End-to-end email generation pipeline
-- Manual QA for UI/UX
+  Hi John, based on your love for fine dining and Mediterranean getaways, [Company] invites you...
 
-## 🚀 Deployment Plan
+  CTA: Book Your Luxury Escape → [Company Link]
+  ----------
+  ```
 
-1. Containerize app with Docker
-2. Set up GitHub Actions for CI/CD
-3. Deploy on Render or Railway for MVP
+## 📦 Deployment
 
-## 📁 File Structure
-
-cold-email-generator/
-├── backend/
-│ ├── main.py
-│ ├── agents/
-│ ├── utils/
-│ └── tests/
-├── frontend/
-│ ├── streamlit_app.py
-│ ├── components/
-├── data/
-│ └── sample_input.csv
-├── .github/workflows/
-│ └── ci.yml
-├── Dockerfile
-├── README.md
-└── requirements.txt
-
-## 🧱 MVP Scope
-
-- Upload CSV
-- Generate first cold email
-- Export results
-
-## 📈 Future Enhancements
-
-- Email tracking integration (SendGrid, Mailchimp API)
-- Team collaboration features
-- Lead scoring based on company potential
-
-## 👤 Target Users
-
-- Startup founders
-- Sales development reps (SDRs)
-- Growth marketers
-
-## 📌 Assumptions
-
-- Each agent runs sequentially per lead
-- Lead enrichment relies on open web data
-- Users manage email sending separately
+This project is ready to be deployed to [Streamlit Cloud](https://streamlit.io/cloud). You’ll need to set the GEMINI\_API\_KEY in the secret manager.
 
 ---
